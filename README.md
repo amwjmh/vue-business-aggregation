@@ -14,5 +14,19 @@
 
 ## 数据
 `mock`  
-`vite-plugin-mock` 
+`vite-plugin-mock`   
+vite.config.ts配置
+```ts
+  import { viteMockServe } from 'vite-plugin-mock'
+  viteMockServe({
+      ignore: /^\_/,
+      mockPath: 'mock',
+      // localEnabled: !isBuild,
+      // prodEnabled: isBuild,
+      injectCode: `
+        import { setupProdMockServer } from '../mock/_createProductionServer'  
+        setupProdMockServer()
+        `
+    }),
+```
 
